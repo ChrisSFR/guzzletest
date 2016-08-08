@@ -11,6 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/test', function () {
+    return response()->json(['test' => 'test'])	;
+});
+
+
+Route::get('/call', function () {
+		$client = new \GuzzleHttp\Client();
+	    $response = $client->request('GET', 'http://guzzletest.dev/test',
+	    					 ['debug' => true]
+	    			);
+	    dd($response); 
 });
